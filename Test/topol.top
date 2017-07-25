@@ -1,0 +1,12 @@
+;Emim+BF4 top,for multi33-EmimBF4.gro
+#include "ffatomtype.itp"
+#include "b-Emim.itp"
+#include "b-Tf2N.itp"
+
+[ system ]
+EmimTf2N
+
+[ molecules ]
+;name	nr
+Emi	216
+f2N     216

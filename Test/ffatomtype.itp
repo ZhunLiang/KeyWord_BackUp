@@ -1,0 +1,22 @@
+[ defaults ]
+;nbfunc     comb-rule      gen-pairs     fudgeLJ      fudgeQQ
+   1             2             no         1           1
+
+ [ atomtypes ]
+; name  mass (a.m.u.)  charge (e) ptype  sigma(nm)     epsilon( kJ/mol)
+;for emim
+C1	12.011	 0	A	0.35	0.27614
+CE	12.011	 0	A	0.35	0.27614
+CR	12.011	 0	A	0.355	0.29288
+CW	12.011	 0	A	0.355	0.29288
+H1	1.0080	 0	A	0.25	0.12552
+HA	1.0080	 0	A	0.242	0.12552
+HC	1.0080	 0	A	0.25	0.12552
+NA	14.007	 0	A	0.325	0.71128
+;for tf2n
+tC      12.011  0       A       0.35    0.27614
+tF      18.9984 0       A       0.295   0.22175
+tS      32.066  0       A       0.355   1.04600
+tO      15.999  0       A       0.296   0.87864
+tN      14.0067 0       A       0.325   0.71128
+
