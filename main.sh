@@ -1,6 +1,10 @@
 #!/bin/perl
 $Direction=$ARGV[0];
-@Key_Words=("*.itp","*.gro","*.py","*.sh","*.mdp","*.top","*.txt");
+#@Key_Words=("*INCAR*","*KPOINTS*","*POSCAR*","*CONTCAR*","*.vasp","*.cif");
+#@Key_Words=("*.itp","*.gro","*.py","*.sh","*.mdp","*.top","*.txt","*.m","*.c","*.xvg","*.ndx","*.pbs","*.tpr");
+@Key_Words=("*INCAR*","*POTCAR*","*POSCAR","*KPOINTS*","*.vasp","*.cif","*.itp","*.gro","*.py","*.sh","*.mdp","*.top","*.txt","*.dat","*.m","*.c","*.xvg","*.ndx","*.pbs","*.tpr");
+#@Key_Words=("*.itp");
+@NotKey=(densMNC,trr);
 $Files = join(",",@Key_Words);
 $File_Num = 0;
 $CountUp = 3000;
@@ -22,9 +26,18 @@ sub BackupPrefix{
   return $temp;
 }
 
+sub GetFile{
+  my @temp = @_;
+  foreach $NotKey(@NotKey){
+    @temp = grep !/$NotKey/,@temp;
+  }
+  return @temp;
+}
+
 sub Copy{
   chdir $_[0];
   my @files_temp=<{$Files}>;
+  @files_temp = GetFile(@files_temp);
   CountFile(@files_temp);
   my $BackFolder = "$Prefix/$_[0]";
   if($RUNCOPY==1){
@@ -56,7 +69,9 @@ sub GetFolder{
 $Prefix = BackupPrefix($Direction);
 chdir $Direction;
 @FOLDER = <{*/}>;
+@FOLDER = grep !/$BackName/,@FOLDER;
 @FILE = <{$Files}>;
+@FILE = GetFile(@FILE);
 if($RUNCOPY==1){
   mkdir($BackName) unless(-d $BackName);
   if(@FILE){system "cp -f @FILE $BackName";}
@@ -81,13 +96,14 @@ while($RunNum!=0 && $COUNT<$CountUp){
   }
 }
 $Folder_Num = @Folder;
+#if($RUNCOPY){system "mv $BackName ../";}
 
 # The next is output#
 print "############\tRun Over. \n";
 print "###########\tOUTPUT. \n";
 if($PRINT==1){
   if($RUNCOPY==1){print "############\tMkdir and copy file. \n";}
-  else {print "############\tDo not copy file. only show total folder number and/or folders. \n";}
+  else {print "############\tDo not copy file. Only show total folder number and/or folders. \n";}
   if($SHOWFOLDER==1){
     print "############\tShow Folders.\n";
     for($i=0;$i<$Folder_Num;$i=$i+1){
@@ -99,7 +115,7 @@ if($PRINT==1){
   }
 }
 
+print "############\tTotal folders number: $Folder_Num. \n";
 print "############\tTotal files number: $File_Num. \n";
-print "############\tTotal folder number: $Folder_Num. \n";
 print "############\tEND. \n";
 
