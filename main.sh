@@ -98,7 +98,7 @@ if($PRINT==1){
     print "\n";
   }
 }
-print "############\tTotal run time: $COUNT. \n";
+
 print "############\tTotal files number: $File_Num. \n";
 print "############\tTotal folder number: $Folder_Num. \n";
 print "############\tEND. \n";
