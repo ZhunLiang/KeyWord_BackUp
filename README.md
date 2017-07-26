@@ -11,6 +11,9 @@ You can change the maxmun loop number by change the $CountUp in main.sh or set i
 
 The $CountUp is to make sure this code won't run all the time if the code is wrong. Also, I am not very sure it won't be wrong, so you need test before.
 
+
+#############################################
+
 Update main.sh at 10:45 26/07/2017
 
 You can choose whether to copy files and mkdir backup folder or not by change the variable $RUNCOPY as 1(yes) or other(no).
@@ -20,4 +23,15 @@ You can choose to print all the folders name in your type folder, set $SHOWFOLDE
 You can choose to whether to print the above by set the $PRINT as 1(yes) or other()no.
 
 It will by print some information like the total folders number, total files number.
+
+
+############################################
+
+Update main.sh at 22:10 26/07/2017
+
+Repair same bugs.
+
+You can set NotKey words to get rid of some files you don't want to backup. Set $Not_Key.
+
+You can update BACKUP. Before you can't do it.
 
