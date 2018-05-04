@@ -35,6 +35,6 @@ You can set NotKey words to get rid of some files you don't want to backup. Set 
 
 You can update BACKUP. Before you can't do it.
 
-Problems: cp may have problems like "Folder/", "Folder/old/". Do not know why yet.
+Note: folder or file name which contain empty, \, /, or other irregular items, can not be copied.
           
-          can not jugde contain "()" file.
+
